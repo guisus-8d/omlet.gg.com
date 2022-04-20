@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Omlet</title>
+    <link rel="shortcut icon" href="arcade-favicon.ico" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="reset.css" />
+<link type="text/css" rel="stylesheet" href="signin.css" />
+<link type="text/css" rel="stylesheet" href="hakeado.css" />
+<script type='application/javascript' src='/js/signin.js'></script>
+
+<style type="text/css">body{
+  font-family: helvetica, arial, sans-serif;
+  color: #d8d8d8;}
+  html{
+  background-color: #181919;
+  background: -webkit-linear-gradient(#33304a, #181919); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#33304a, #181919); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#33304a, #181919); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#33304a, #181919); /* Standard syntax */
+
+  min-height: 100%;
+}
+</style>
+ <meta charset="utf-8">
+ 
+    <script>
+    var inicio=0;
+    var timeout=0;
+ 
+    function empezarDetener(elemento)
+    {
+        if(timeout==0)
+        {
+            // empezar el cronometro
+ 
+            elemento.value="Detener";
+ 
+            // Obtenemos el valor actual
+            inicio=new Date().getTime();
+ 
+            // Guardamos el valor inicial en la base de datos del navegador
+            localStorage.setItem("inicio",inicio);
+ 
+            // iniciamos el proceso
+            funcionando();
+        }else{
+            // detemer el cronometro
+ 
+            elemento.value="Empezar";
+            clearTimeout(timeout);
+ 
+            // Eliminamos el valor inicial guardado
+            localStorage.removeItem("inicio");
+            timeout=0;
+        }
+    }
+ 
+    function funcionando()
+    {
+        // obteneos la fecha actual
+        var actual = new Date().getTime();
+ 
+        // obtenemos la diferencia entre la fecha actual y la de inicio
+        var diff=new Date(actual-inicio);
+ 
+        // mostramos la diferencia entre la fecha actual y la inicial
+        var result=LeadingZero(diff.getUTCHours())+":"+LeadingZero(diff.getUTCMinutes())+":"+LeadingZero(diff.getUTCSeconds());
+        document.getElementById('crono').innerHTML = result;
+ 
+        // Indicamos que se ejecute esta función nuevamente dentro de 1 segundo
+        timeout=setTimeout("funcionando()",1000);
+    }
+ 
+    /* Funcion que pone un 0 delante de un valor si es necesario */
+    function LeadingZero(Time)
+    {
+        return (Time < 10) ? "0" + Time : + Time;
+    }
+ 
+    window.onload=function()
+    {
+        if(localStorage.getItem("inicio")!=null)
+        {
+            // Si al iniciar el navegador, la variable inicio que se guarda
+            // en la base de datos del navegador tiene valor, cargamos el valor
+            // y iniciamos el proceso.
+            inicio=localStorage.getItem("inicio");
+            document.getElementById("boton").value="Detener";
+            funcionando();
+        }
+    }
+    </script>
+ 
+ <style type="text/css">
+ 	
+ 	input{
+
+ 		background: aqua;
+ 		color: black;
+ 		border-style: none;
+ 		padding: 5px;
+ 		border-radius: 10px;
+ 	}
+
+
+
+
+
+ </style>
+    <style>
+    .crono_wrapper {text-align:center;width:200px;}
+    </style>
+</head>
+<body>
+	<pre>
+		
+		
+	</pre>
+<center>
+<h1>para solicitar un bono de omlet arcade tienes<br>
+    que tener una cuenta activa en nuestra plataforma<br>
+    al solisitar tu bono tienes que esperar alrededor<br>
+    de 48 horas para que nuestros trabajadores verifiquen<br>
+    su informaciòn 
+<pre>
+	
+</pre>
+	!Ponte Gamer!</h1>
+</center>
+<center>
+<button class="login-button" type="submit" id="peneneitor"><a href="PENO.html">
+  SOLICITAR BONO</a>
+ </button>

